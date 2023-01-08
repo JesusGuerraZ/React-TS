@@ -4,8 +4,9 @@
 // import { Funciones } from './typescript/Funciones';
 // import { Contador } from "./components/Contador";
 /* import { ContadorConHook } from "./components/ContadorConHook"; */
-import { Usuarios } from "./components/Usuarios";
+/* import { Usuarios } from "./components/Usuarios"; */
 // import { Login } from "./components/Login";
+import { Formularios } from './components/Formularios';
 
 const App = () => {
   return (
@@ -23,7 +24,9 @@ const App = () => {
       <ContadorConHook /> */}
       {/* <hr />
       <Login /> */}
-      <Usuarios />
+      {/* <hr />
+      <Usuarios /> */}
+      <Formularios />
       
     </div>
   )

@@ -1,20 +1,8 @@
-import { useEffect, useState } from 'react'
-import { reqResApi } from '../api/reqRes';
-import { ReqResListado, Usuario } from '../interfaces/reqRes';
+import { useUsuarios } from "../hooks/useUsuarios"
 
 export const Usuarios = () => {
 
-  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
-
-    useEffect(() => {
-        //Llamado al API
-        reqResApi.get<ReqResListado>('/users')
-                .then(resp => {
-                  console.log(resp.data.data);
-                })
-                .catch(console.log);
-    }, [])
-    
+  const {usuarios, renderIteam, paginaAnterior, paginaSiguiente} = useUsuarios()
   return (
     <>
      <h3>Usuarios</h3>
@@ -26,7 +14,21 @@ export const Usuarios = () => {
                 <th>Email</th>
             </tr>
         </thead>
+        <tbody>
+          { 
+            usuarios.map( renderIteam )
+          }
+        </tbody>
      </table>
+    
+
+     <button className='btn btn-danger' onClick={ paginaAnterior }>
+          Anteriores 
+    </button>
+    &nbsp;
+    <button className='btn btn-primary' onClick={ paginaSiguiente }>
+          siguiente
+    </button>
     </>
   )
 }
